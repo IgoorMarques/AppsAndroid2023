@@ -1,8 +1,10 @@
-package com.IgorDev.applistavip;
+package com.IgorDev.applistavip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.IgorDev.applistavip.R;
 
 public class MainActivity extends AppCompatActivity {
 
