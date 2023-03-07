@@ -3,12 +3,16 @@ package com.IgorDev.applistavip.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.EditText;
 
 import com.IgorDev.applistavip.R;
 import com.IgorDev.applistavip.model.Curso;
 import com.IgorDev.applistavip.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+    EditText input_nome;
+    EditText input_sobrenome;
+    EditText input_curso;
     Pessoa pessoa;
     Curso curso;
     @Override
@@ -19,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
         //criar um novo objeto do tipo Pessoa.
         //Sempre que usamos o new e invocamos o método construtor
         //é criado um objeto que acessará
-
        //Objeto do tipo pessoa
         pessoa = new Pessoa();
-        //Objeto do tipo curso
-        curso = new Curso();
+        pessoa.setPrimeiroNome("Igor");
+        pessoa.setSobrenome("Marques");
+        pessoa.setCursoDesejado("ADS");
+        pessoa.setTelefone("033-3344-333");
     }
 }
