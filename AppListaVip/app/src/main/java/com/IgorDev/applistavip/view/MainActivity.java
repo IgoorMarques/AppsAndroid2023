@@ -49,13 +49,18 @@ public class MainActivity extends AppCompatActivity {
         pessoa = new Pessoa();
 
         controller = new ControllerPessoa();
+
+        //Criando arquivo xml para armazenar dados
         preferences = getSharedPreferences(NOME_PREFERENCIA, 0);
         SharedPreferences.Editor listaVip = preferences.edit();
 
-        pessoa.setPrimeiroNome("Igor");
-        pessoa.setSobrenome("Marques");
-        pessoa.setCursoDesejado("ADS");
-        pessoa.setTelefone("033-3344-333");
+        //Atribuindo valores ao objeto 'pessoa' atráves dos dados do arquivo preferences
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
+        pessoa.setSobrenome(preferences.getString("Sobrenome", ""));
+        pessoa.setCursoDesejado(preferences.getString("Telefone",""));
+        pessoa.setTelefone(preferences.getString("Curso", ""));
+
+        //Identificando os componentes do layout da tela main
         txt_nome = findViewById(R.id.txt_nome);
         txt_sobrenome = findViewById(R.id.txt_sobrenome);
         txt_curso = findViewById(R.id.txt_curso);
@@ -63,16 +68,25 @@ public class MainActivity extends AppCompatActivity {
         bt_limpar = findViewById(R.id.bt_limpar);
         bt_salvar = findViewById(R.id.bt_salvar);
         bt_Sair = findViewById(R.id.bt_Sair);
+
+        //Atribuindo valores na tela do app por meio dos valores do objeto 'pessoa'
         txt_nome.setText(pessoa.getPrimeiroNome());
         txt_sobrenome.setText(pessoa.getSobrenome());
         txt_telefone.setText(pessoa.getTelefone());
         txt_curso.setText(pessoa.getCursoDesejado());
+
+        //Função que será chama quando bt_limpar for clicado
         bt_limpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 limpar();
+                //limpando os dados do aquivo xml 'pref_listavip'
+                listaVip.clear();
+                listaVip.apply();
             }
         });
+
+        //Função que será chamada quando bt_sair for clicado
         bt_Sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,20 +95,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //Função que será chamada quando bt_salvar for clicado
         bt_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Atribuindo valores coletados dos edit's text da tela do app ao objeto 'pessoa'
                 pessoa.setPrimeiroNome(txt_nome.getText().toString());
                 pessoa.setSobrenome(txt_sobrenome.getText().toString());
                 pessoa.setTelefone(txt_telefone.getText().toString());
                 pessoa.setCursoDesejado(txt_curso.getText().toString());
+
+                //Mostra mensagem na tela informando os dados do objeto pessoal por meio do metodo toString()
                 Toast.makeText(MainActivity.this, "Cadastrado: "+ pessoa.toString(), Toast.LENGTH_LONG).show();
                 limpar();
+
+                //Adicionando valores os valores do objeto 'pessoa' ao arquivo 'pref_listavip'
                 listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
                 listaVip.putString("Sobrenome", pessoa.getSobrenome());
                 listaVip.putString("Curso", pessoa.getCursoDesejado());
                 listaVip.putString("Telefone", pessoa.getTelefone());
                 listaVip.apply();
+
+                //Chamando o método salvar do objeto controle
                 controller.salvar(pessoa);
             }
         });
