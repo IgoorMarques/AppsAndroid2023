@@ -8,14 +8,14 @@
     tools:context=".view.MainActivity">
 
     <TextView
-        android:layout_marginTop="35dp"
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="Aplicativo Lists VIP"
+        android:textColor="#2D5954"
         android:textSize="35sp"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,12 +25,15 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:background="#CDB8A0"
         android:orientation="vertical"
         android:padding="30dp"
-        android:background="#CDB8A0"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
@@ -74,28 +77,44 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
         android:gravity="center"
         android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
+            android:id="@+id/bt_limpar"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:text="Limpar"
-            android:id="@+id/bt_limpar"/>
+            android:layout_weight="0.6"
+            android:text="Limpar" />
+
         <Button
-            android:layout_marginEnd="30dp"
-            android:layout_width="0dp"
-            android:layout_marginStart="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:text="Salvar"
             android:id="@+id/bt_salvar"
-            />
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:text="Salvar" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_Sair"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="x"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
